@@ -1,5 +1,15 @@
 # GenAI_Integration
-
+DONE:
+ create React app
+ tailwind config
+ header
+ routing
+ login/sign up form
+ form validation
+ Firebase setup
+ Added Redux Toolkit and redux
+ header updated
+ user : new/login/sign out
 Features:
 
 login/signupPage
