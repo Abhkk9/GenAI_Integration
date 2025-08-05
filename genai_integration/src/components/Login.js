@@ -1,25 +1,25 @@
 import React, { useRef, useState } from "react";
 import Header from "./Header";
 import checkValidData from "../utils/validate";
-import { useDispatch } from 'react-redux';
-import { addUser, removeUser } from '../utils/userSlice';
+import { useDispatch } from "react-redux";
+import { addUser, removeUser } from "../utils/userSlice";
 import {
   signInWithEmailAndPassword,
-  validatePassword,updateProfile,
+  validatePassword,
+  updateProfile,
   createUserWithEmailAndPassword,
 } from "firebase/auth";
 import { auth } from "../utils/firebase.js";
-import { createBrowserRouter, RouterProvider, useNavigate } from 'react-router-dom'
+
 
 function Login() {
   const [isSignInForm, setisSignInForm] = useState(true);
   const [errorMsg, setErrorMsg] = useState();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const email = useRef(null);
   const userName = useRef(null);
   const password = useRef(null);
   const dispatch = useDispatch();
-  
 
   const handleButtonClick = () => {
     const validationMsg = checkValidData(
@@ -27,11 +27,14 @@ function Login() {
       password.current.value
     );
     setErrorMsg(validationMsg);
-   console.log(validationMsg);
-   
- console.log(errorMsg)
+    console.log(validationMsg);
+
+    console.log(errorMsg);
+    
     if (errorMsg) return;
-    console.log(isSignInForm)
+    
+    console.log(isSignInForm);
+
     if (!isSignInForm) {
       createUserWithEmailAndPassword(
         auth,
@@ -43,17 +46,22 @@ function Login() {
           const user = userCredential.user;
           console.log(user);
           updateProfile(user, {
-  displayName: userName.current.value, photoURL: "https://example.com/jane-q-user/profile.jpg"
-}).then(() => {
-  // Profile updated!
-  const {uid,email,displayName} = auth.currentUser;
-      dispatch(addUser({ uid:uid,email:email,displayName:displayName}));
-  // ...
-}).catch((error) => {
-  // An error occurred
-  // ...
-});
-          
+            displayName: userName.current.value,
+            photoURL: "https://example.com/jane-q-user/profile.jpg",
+          })
+            .then(() => {
+              // Profile updated!
+              const { uid, email, displayName } = auth.currentUser;
+              dispatch(
+                addUser({ uid: uid, email: email, displayName: displayName })
+              );
+              // ...
+            })
+            .catch((error) => {
+              // An error occurred
+              // ...
+            });
+
           // ...
         })
         .catch((error) => {
@@ -72,8 +80,7 @@ function Login() {
           // Signed in
           const user = userCredential.user;
           console.log(user);
-          navigate("/browse");
-          // ...
+          
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -108,7 +115,7 @@ function Login() {
         />
         {!isSignInForm ? (
           <input
-            ref ={userName}
+            ref={userName}
             type="text"
             placeholder=" Full Name "
             className="py-2 m-2 w-full text-black"

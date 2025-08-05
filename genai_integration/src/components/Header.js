@@ -1,12 +1,39 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {  signOut } from "firebase/auth";
 import { auth } from "../utils/firebase.js";
 import { useNavigate } from 'react-router-dom';
 import {useSelector} from  "react-redux"
+import { onAuthStateChanged } from "firebase/auth";
+import { useDispatch } from 'react-redux';
+import { addUser, removeUser } from '../utils/userSlice';
+import { LOGO, USER_ICON } from '../utils/constants.js';
 
 function Header() {
   const navigate = useNavigate(); 
-  const user = useSelector((store)=>store.user)
+  const user = useSelector((store)=>store.user);
+   const dispatch = useDispatch();
+  
+   // unsubscribe in useEffect?
+
+useEffect(()=>{
+  const unsubscribe = onAuthStateChanged(auth, (user) => {
+  if (user) {
+    // User is signed in, see docs for a list of available properties
+    // https://firebase.google.com/docs/reference/js/auth.user
+    
+    const {uid,email,displayName} = user;
+    dispatch(addUser({ uid:uid,email:email,displayName:displayName}));
+    navigate("/browse")
+  } else {
+    // User is signed out
+    dispatch(removeUser());
+    navigate("/")
+    
+  }
+});
+  return () => unsubscribe();
+},[])
+
   const handleSignOut = ()=>{
     console.log("sign out clicked")
     signOut(auth).then(() => {
@@ -22,13 +49,13 @@ function Header() {
   return (
     <div className='w-screen absolute z-20 flex justify-between '>
       <img  className='w-44 px-8 py-2 bg-gradient-to-b from-black '
-            src = "https://help.nflxext.com/helpcenter/OneTrust/oneTrust_production_2025-07-24/consent/87b6a5c0-0104-4e96-a291-092c11350111/019808e2-d1e7-7c0f-ad43-c485b7d9a221/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png" 
+            src = {LOGO} 
            alt="Logo"
             />
             {user && (<div className='flex '>
             <img className='w-15 p-2'
             alt='userIcon' 
-           src ="https://occ-0-4346-3646.1.nflxso.net/dnm/api/v6/vN7bi_My87NPKvsBoib006Llxzg/AAAABXz4LMjJFidX8MxhZ6qro8PBTjmHbxlaLAbk45W1DXbKsAIOwyHQPiMAuUnF1G24CLi7InJHK4Ge4jkXul1xIW49Dr5S7fc.png?r=e6e"
+           src ={USER_ICON}
            />
        <button className='w-20 bg-red-300 rounded-xl' onClick={handleSignOut}>Hi ,{user.displayName} Sign Out</button>  
        </div>)}
