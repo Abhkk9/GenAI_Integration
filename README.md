@@ -10,6 +10,12 @@ DONE:
  Added Redux Toolkit and redux
  header updated
  user : new/login/sign out
+ Redux integration for movie list 
+ Updated Browse page 
+ Moved constants
+ 
+
+
 Features:
 
 login/signupPage
