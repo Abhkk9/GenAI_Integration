@@ -20,7 +20,7 @@ function VideoBackground({ movieId }) {
     //src="https://www.youtube.com/embed/9KmGybp4y_Q?si=ADwj03Qo_lnxumrY"
     // src="https://www.youtube.com/embed/d9erkpdh5o0?si=ruqAQb_mESVbNPrR"
     // setTrailerLink( `https://www.youtube.com/embed/${trailer.key}`);
-    // dispatch(addMoviesList(json.results))
+    // dispatch(addDiscoverMovieList(json.results))
   };
 
   useEffect(() => {
