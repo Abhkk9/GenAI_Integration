@@ -5,7 +5,7 @@ import VideoBackground from './VideoBackground';
 
 function PreviewContainer() {
 
-  const movies = useSelector ((store)=> store.movies?.movieList);
+  const movies = useSelector ((store)=> store.movies?.discoverMovieList);
   if(movies === null) return;
   const displayMovie =movies[0];
   console.log(displayMovie);

@@ -5,11 +5,15 @@ import PreviewContainer from './PreviewContainer';
 import MovieListContainer from './MovieListContainer';
 
 export default function Browse() {
-
-  useMoviesList();
+  const categorties =["discover", "upcoming", "now_playing", "popular", "top_rated"]
+  useMoviesList(categorties[0]);
+  useMoviesList(categorties[1]);
+  useMoviesList(categorties[2]);
+  useMoviesList(categorties[3]);
+  useMoviesList(categorties[4]);
 
   return (
-    <div>
+    <div className='bg-black'>
       <Header/>
       <PreviewContainer/>
       <MovieListContainer/>
