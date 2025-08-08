@@ -13,7 +13,7 @@ function VideoBackground({ movieId }) {
     const trailer = await data.json();
     console.log(trailer);
     setTrailerLink(
-      "https://www.youtube.com/embed/9KmGybp4y_Q?si=ADwj03Qo_lnxumrY"
+      "https://www.youtube.com/embed/a6VVrAZUnsc?si=ATCCnDwGiADkzUNe"
     );
 
     // youtube embeding for SRC  "si=ADwj03Qo_lnxumrY" parameter not working so using hardcoded trailer
