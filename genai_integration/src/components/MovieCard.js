@@ -3,7 +3,7 @@ import { IMG_URL } from '../utils/constants';
 
 function Moviecard({posterPath}) {
   const poster_path = IMG_URL + posterPath;
-  console.log(posterPath);
+  // console.log(posterPath);
   return (
     // w-48
     <div className='px-2 min-w-[180px] max-w-[220px]'>
