@@ -11,7 +11,7 @@ function VideoBackground({ movieId }) {
       API_OPTIONS
     );
     const trailer = await data.json();
-    console.log(trailer);
+    // console.log(trailer);
     setTrailerLink(
       "https://www.youtube.com/embed/a6VVrAZUnsc?si=ATCCnDwGiADkzUNe"
     );

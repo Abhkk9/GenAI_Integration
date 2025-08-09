@@ -27,13 +27,13 @@ function Login() {
       password.current.value
     );
     setErrorMsg(validationMsg);
-    console.log(validationMsg);
+    // console.log(validationMsg);
 
-    console.log(errorMsg);
+    // console.log(errorMsg);
     
     if (errorMsg) return;
     
-    console.log(isSignInForm);
+    // console.log(isSignInForm);
 
     if (!isSignInForm) {
       createUserWithEmailAndPassword(
@@ -44,7 +44,7 @@ function Login() {
         .then((userCredential) => {
           // Signed up
           const user = userCredential.user;
-          console.log(user);
+          // console.log(user);
           updateProfile(user, {
             displayName: userName.current.value,
             photoURL: "https://example.com/jane-q-user/profile.jpg",
@@ -79,7 +79,7 @@ function Login() {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          console.log(user);
+          // console.log(user);
           
         })
         .catch((error) => {

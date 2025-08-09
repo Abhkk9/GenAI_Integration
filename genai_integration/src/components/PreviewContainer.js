@@ -8,7 +8,7 @@ function PreviewContainer() {
   const movies = useSelector ((store)=> store.movies?.discoverMovieList);
   if(movies === null) return;
   const displayMovie =movies[0];
-  console.log(displayMovie);
+  // console.log(displayMovie);
   const {original_title,overview,id} =displayMovie;
   return (
     <div>
