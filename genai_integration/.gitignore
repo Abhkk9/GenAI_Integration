@@ -12,6 +12,8 @@
 /build
 # firebase API
 src/utils/firebase.js
+# OpenAI API key
+src/utils/openApiKey.js
 # misc
 .DS_Store
 .env.local

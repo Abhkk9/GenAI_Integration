@@ -6,7 +6,7 @@ function Moviecard({posterPath}) {
   // console.log(posterPath);
   return (
     // w-48
-    <div className='px-2 min-w-[180px] max-w-[220px]'>
+    <div className='w-36 md:px-2 min-w-[180px] max-w-[220px]'>
       <img
         alt="poster"
         src={poster_path}

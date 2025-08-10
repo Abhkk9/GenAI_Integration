@@ -13,7 +13,7 @@ function MovieListContainer() {
   if(!discoverMovieList) return;
   return (
     <div className='bg-black '>
-      <div className=' -mt-52 relative  z-20'>
+      <div className='mt-0 md:-mt-52  relative  z-20'>
     <MovieList moviesList={discoverMovieList} title={"Discover"}/>
       <MovieList moviesList={upcomingMovieList} title={"Upcoming"}/>
       <MovieList moviesList={now_playingMovieList} title={"Now playing"}/>

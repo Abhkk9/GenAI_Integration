@@ -95,14 +95,17 @@ function Login() {
   return (
     <div>
       <Header />
-      <img
-        className="absolute rounded-lg"
+      <div className="absolute ">
+         <img
+        className="  "
         src="https://assets.nflxext.com/ffe/siteui/vlv3/258d0f77-2241-4282-b613-8354a7675d1a/web/IN-en-20250721-TRIFECTA-perspective_cadc8408-df6e-4313-a05d-daa9dcac139f_small.jpg"
         alt="Background poster"
       />
+      </div>
+     
       <form
         onSubmit={(e) => e.preventDefault()}
-        className="absolute p-12 bg-black w-4/12 mx-auto right-0 left-0 text-white rounded-lg bg-opacity-70"
+        className="absolute p-12 bg-black w-full md:w-4/12 mx-auto right-0 left-0 text-white rounded-lg bg-opacity-70"
       >
         <h1 className="font-bold text-xl py-2 m-2">
           {isSignInForm ? "Sign In" : "Sign up"}
